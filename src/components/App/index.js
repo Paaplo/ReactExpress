@@ -1,19 +1,29 @@
 
-import React from 'react';
+import React, {Component} from 'react';
 const { Link } = require('react-router');
 
 import NavBar from './NavBar';
-import Main from './Main';
+import Footer from './Footer';
 
-let App = React.createClass({  
-  render() {
+
+class App extends Component {
+ render() {
+   const { header, content, footer } = this.props;
+   const defaultContent = (
+	  <div className="page centered-text">
+	    <h1>
+	    	App
+	    </h1>
+	  </div>
+	);
     return(
       <div>
         < NavBar/>
-        < Main />
+          {content || defaultContent}
+        < Footer />
       </div>
     )
   }
-});
+}
 
 export default App;

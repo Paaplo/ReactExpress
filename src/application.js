@@ -10,6 +10,7 @@ import reducers from './reducers';
 
 import App from './components/App';
 import Hello from './components/hello';
+import Hello2 from './components/hello2';
 
 
 const reducer = combineReducers(Object.assign({}, reducers, {
@@ -23,10 +24,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <Route path="foo" component={Hello}/>
-        <Route path="bar" component={Hello}/>
+        <Route path="foo" components={{content: Hello}}/>
+        <Route path="bar" components={{content: Hello2}}/>
       </Route>
     </Router>
   </Provider>,
-	 document.getElementById('app')
+  document.getElementById('app')
 );

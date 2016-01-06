@@ -1,10 +1,18 @@
 import React from 'react';
+const { Link } = require('react-router');
+const { pushPath } = require('redux-simple-router');
+const { connect } = require('react-redux');
 
-const MyComponent = React.createClass({
+const Bar = React.createClass({
   render: function() {
-    return <div>Hello World2</div>;
+    return (<h1>Bar
+     
+      </h1>
+      );
   }
 });
 
-
- export default MyComponent;
+module.exports = connect(
+  null,
+  { pushPath }
+)(Bar);
