@@ -1,33 +1,44 @@
 'use strict';
 
-var path = require('path');
-//	webpack = require('webpack');
+var path = require ('path');
+var webpack = require ('webpack');
 
-function config () {
+function config (env) {
 	return {
-		entry: {
-			application: './src/application',
-		},
+		devtool: 'cheap-module-eval-source-map',
+		entry: [
+        'webpack/hot/dev-server',
+		  'webpack-hot-middleware/client',
+		  path.join(__dirname, 'src', 'application.js'),
+		],		
 		output: {
 			path: path.join(__dirname, 'public/scripts'),
-			filename: 'bundle.js'
+			filename: 'bundle.js',
+  			publicPath: 'http://localhost:3000/scripts/'
 		},
 		module: {
 			loaders: [
 		    {
-		      test: /\.js$/,
-		      exclude: /(node_modules|bower_components)/,
-     		  loader: 'babel',
-     		  query: {
-	              presets: ['es2015', 'react'],
-		          cacheDirectory: true
-		      }
+		        test: /\.js$/,
+		        exclude: /node_modules/,
+     		    loader: 'babel',
 
-		     },
-				{test: /\.less/, loader: 'style!css!less'},
-				{test: /\.css/, loader: 'style!css'},
+		    },
+			{
+				test: /\.less/, 
+				loader: 'style!css!less'
+			},
+			{
+				test: /\.css/, 
+				loader: 'style!css'
+			}
 			]
-		}
+		},
+		plugins: [
+		  new webpack.optimize.OccurenceOrderPlugin(), // recommanded by webpack
+		  new webpack.HotModuleReplacementPlugin(),
+		  new webpack.NoErrorsPlugin() // recommanded by webpack
+		],	
 	};
 }
 
