@@ -3,16 +3,17 @@ const { Link } = require('react-router');
 const { pushPath } = require('redux-simple-router');
 const { connect } = require('react-redux');
 
-const MyComponent = React.createClass({
+const Foo = React.createClass({
   render: function() {
-    return (<h1>Foo
-     
-      </h1>
-      );
+    return (
+    	<div className="container">
+    		<h1>Foo</h1>
+    	</div>
+    );
   }
 });
 
-module.exports = connect(
+export default connect(
   null,
   { pushPath }
-)(MyComponent);
+)(Foo);

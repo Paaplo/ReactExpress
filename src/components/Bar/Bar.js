@@ -2,17 +2,22 @@ import React from 'react';
 const { Link } = require('react-router');
 const { pushPath } = require('redux-simple-router');
 const { connect } = require('react-redux');
+import BarList from '../../containers/bar-list';
+import BarCounts from '../../containers/bar-counts';
 
 const Bar = React.createClass({
   render: function() {
-    return (<h1>Bar
-     
-      </h1>
-      );
+    return (
+    	<div className="container">
+	        <h1>Bar</h1>
+	        <BarList />
+          <BarCounts />
+	    </div>
+    );
   }
 });
 
-module.exports = connect(
+export default connect(
   null,
   { pushPath }
 )(Bar);

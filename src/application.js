@@ -3,29 +3,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router';
+import { Router, Route , IndexRoute} from 'react-router';
 import { createHistory } from 'history';
-import { syncReduxAndRouter, routeReducer } from 'redux-simple-router';
+import { syncReduxAndRouter } from 'redux-simple-router';
 import reducers from './reducers';
 
-import App from './components/App';
-import Hello from './components/hello';
-import Hello2 from './components/hello2';
+import App from './components/index.js';
+import Home from './components/Home/Home';
+import Bar from './components/Bar/Bar';
+import Foo from './components/Foo/Foo';
 
+const store = createStore(reducers);
+const history = createHistory();
 
-const reducer = combineReducers(Object.assign({}, reducers, {
-  routing: routeReducer
-}))
-const store = createStore(reducer)
-const history = createHistory()
+syncReduxAndRouter(history, store);
 
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <Route path="foo" components={{content: Hello}}/>
-        <Route path="bar" components={{content: Hello2}}/>
+        <IndexRoute component={Home}/>
+        <Route path="foo" component={Foo}/>
+        <Route path="bar" component={Bar}/>
       </Route>
     </Router>
   </Provider>,

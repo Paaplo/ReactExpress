@@ -1,10 +1,19 @@
 import React from 'react';
+import footerStyles from '../styles/footer.css';
 
-module.exports =  React.createClass({
+export default React.createClass({
 	render: function() {
 		return (
-			<div className="class">Footer</div>
-		);
+      <footer className="footer navbar-fixed-bottom" >
+        <div className='container'>
+          <div className='row'>
+            <div className='col-sm-5'>
+              <h3>Footer</h3>
+            </div>
+          </div>
+        </div>
+      </footer>		
+      );
 	}
 });
 
