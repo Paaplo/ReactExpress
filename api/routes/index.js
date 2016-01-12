@@ -14,6 +14,7 @@ router.route('/posts')
 
 		var post = new Post();
 		post.text = req.body.text;
+		post.title = req.body.title;
 		post.created_by = req.body.created_by;
 		post.save(function(err, post) {
 			if (err){
@@ -32,7 +33,7 @@ router.route('/posts')
 		});
 	});
 
-router.route('posts/:id')
+router.route('/posts/:id')
 	.get(function(req, res){
 		Post.findById(req.params.id, function(err, post){
 			if(err){
@@ -67,7 +68,7 @@ router.route('posts/:id')
 			if (err){
 				return res.send(err);
 			}
-			return res.json('deleted :(');
+			return res.json(req.params.id);
 		});
 	});
 

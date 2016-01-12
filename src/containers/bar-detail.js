@@ -14,7 +14,8 @@ const BarDetail = React.createClass({
 			<h4>Details</h4>
 
 			<div><p>Title: {this.props.post.title}</p></div>
-			<div> {this.props.post.content}</div>
+			<div> Text: {this.props.post.text}</div>
+			<div> Id: {this.props.post._id}</div>
 		</div>
 		);
 	}

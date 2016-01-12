@@ -8,9 +8,9 @@ function config (env) {
 	return {
 		devtool: 'cheap-module-eval-source-map',
 		entry: [
-          'webpack/hot/dev-server',
+      'webpack/hot/dev-server',
 		  'webpack-hot-middleware/client',
-		  //'bootstrap-loader',
+		  'bootstrap-loader',
 		  path.join(__dirname, 'src', 'application.js'),
 		],		
 		output: {
@@ -50,7 +50,8 @@ function config (env) {
         test: /\.(woff2?|ttf|eot|svg)$/,
         loaders: [ 'url?limit=10000' ],
 		  },
-		  { test: /bootstrap-sass\/assets\/javascripts\//, 
+		  { 
+		  	test: /bootstrap-sass\/assets\/javascripts\//, 
 		  	loader: 'imports?jQuery=jquery' 
 		  },
 			]
@@ -58,7 +59,8 @@ function config (env) {
 		plugins: [
 		  new webpack.optimize.OccurenceOrderPlugin(), // recommanded by webpack
 		  new webpack.HotModuleReplacementPlugin(),
-		  new webpack.NoErrorsPlugin() // recommanded by webpack
+		  new webpack.NoErrorsPlugin() ,// recommanded by webpack
+
 		],
 		 postcss: [ autoprefixer ],	
 	};

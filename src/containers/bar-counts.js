@@ -1,13 +1,14 @@
+'use strict';
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-import {increase, decrease } from '../actions/index';
-
 
 const BarCount = React.createClass({
   render() {
     return (
     	<div>
-          <div  className="row col-sm-4">Number of clicks: {this.props.number}</div>
+          <div className="col-sm-4">
+            Number of clicks: {this.props.number}
+          </div>
 	     </div>
     );
   }
@@ -15,7 +16,7 @@ const BarCount = React.createClass({
 
 function mapStateToProps (state) {
 	return{
-		number: state.count.number 
+		number: state.counts.number 
 	};
 }
 

@@ -12,7 +12,7 @@
     // Allow ES6 features
     "esnext": true,
     // 4 space indent (does not create warnings)
-    "indent": 4,
+    "indent": 2,
     // Constructor functions must be capitalised
     "newcap": true,
     // Prevent use of undefined variables

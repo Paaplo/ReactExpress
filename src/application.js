@@ -1,11 +1,12 @@
 'use strict';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route , IndexRoute} from 'react-router';
 import { createHistory } from 'history';
 import { syncReduxAndRouter } from 'redux-simple-router';
+import promiseMiddleware from 'redux-promise';
 import reducers from './reducers';
 
 import App from './components/index.js';
@@ -13,8 +14,10 @@ import Home from './components/Home/Home';
 import Bar from './components/Bar/Bar';
 import Foo from './components/Foo/Foo';
 
-const store = createStore(reducers);
-const history = createHistory();
+let createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
+let store = createStoreWithMiddleware(reducers);
+
+let history = createHistory();
 
 syncReduxAndRouter(history, store);
 

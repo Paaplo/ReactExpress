@@ -9,9 +9,11 @@ import mainStyles from './styles/main.css';
 class App extends Component {
  render() {
     return(
-      <div>
-        < NavBar/>
-          {this.props.children}
+      <div className={mainStyles.wrapper}>
+	        < NavBar/>
+	          <div className={mainStyles.body} >
+	          	{this.props.children}
+	          </div> 
         < Footer />
       </div>
     )
