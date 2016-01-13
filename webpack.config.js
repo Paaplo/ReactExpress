@@ -8,7 +8,7 @@ function config (env) {
 	return {
 		devtool: 'cheap-module-eval-source-map',
 		entry: [
-      'webpack/hot/dev-server',
+          'webpack/hot/dev-server',
 		  'webpack-hot-middleware/client',
 		  'bootstrap-loader',
 		  path.join(__dirname, 'src', 'application.js'),
@@ -47,20 +47,20 @@ function config (env) {
           ]		
 			},
 			{
-        test: /\.(woff2?|ttf|eot|svg)$/,
-        loaders: [ 'url?limit=10000' ],
+				test: /\.(woff2?|ttf|eot|svg)$/,
+				loaders: [ 'url-loader?limit=10000' ],
 		  },
-		  { 
-		  	test: /bootstrap-sass\/assets\/javascripts\//, 
-		  	loader: 'imports?jQuery=jquery' 
-		  },
+
 			]
 		},
 		plugins: [
 		  new webpack.optimize.OccurenceOrderPlugin(), // recommanded by webpack
 		  new webpack.HotModuleReplacementPlugin(),
 		  new webpack.NoErrorsPlugin() ,// recommanded by webpack
-
+	    new webpack.ProvidePlugin({
+	      $: 'jquery',
+	      jQuery: 'jquery'
+	    }),
 		],
 		 postcss: [ autoprefixer ],	
 	};

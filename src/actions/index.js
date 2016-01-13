@@ -36,14 +36,7 @@ function getPosts () {
     payload: request
   };
 }
-function deletePost (id) {
-  console.log(id);
-  const request = axios.delete('/api/posts/'+id);
-  return {
-    type: DELETE_POST,
-    payload: request
-  };
-}
+
 
 export {increase, decrease, selectPost, addPost, getPosts, deletePost };
 
