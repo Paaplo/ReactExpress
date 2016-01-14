@@ -1,6 +1,6 @@
 'use strict';
 import axios from 'axios';
-import {POST_SELECTED, INCREASE, DECREASE, ADD_POST, GET_POSTS,DELETE_POST } from '../constants';
+import {POST_SELECTED, INCREASE, DECREASE, ADD_POST, GET_POSTS } from '../constants';
 function selectPost (post) {
 	return {
 		type: POST_SELECTED,
@@ -38,5 +38,5 @@ function getPosts () {
 }
 
 
-export {increase, decrease, selectPost, addPost, getPosts, deletePost };
+export {increase, decrease, selectPost, addPost, getPosts };
 
