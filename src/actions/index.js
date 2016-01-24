@@ -38,7 +38,3 @@ export function getPosts () {
     payload: request
   };
 }
-
-
-
-
