@@ -19,7 +19,8 @@ function config (env) {
   		publicPath: 'http://localhost:3000/scripts/'
 		},
 		module: {
-			loaders: [
+			loaders: 
+        [
 	    {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -28,30 +29,31 @@ function config (env) {
 	    {
         test: /\.scss$/,
         loaders: [
-          'style',
-          'css?modules&importLoaders=2&localIdentName=[name]__[local]__[hash:base64:5]',
-          'postcss',
-          'sass',
-        ],
-      },
-			{
-				test: /\.less$/, 
-				loader: 'style!css!less'
-			},
-			{
-				test: /\.css$/,
-				loaders:[
-          'style',
-          'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
-          'postcss'
-          ]		
-			},
-			{
-				test: /\.(woff2?|ttf|eot|svg)$/,
-				loaders: [ 'url-loader?limit=10000' ],
-		  },
-
-			]
+            'style',
+            'css?modules&importLoaders=2&localIdentName=[name]__[local]__[hash:base64:5]',
+            'postcss',
+            'sass',
+            ],
+        },
+        {
+        test: /\.less$/, 
+        loader: 'style!css!less'
+        },
+        {
+        test: /\.css$/,
+        loaders:[
+            'style',
+            'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
+            'postcss'
+            ]		
+        },
+		{
+        test: /\.(woff2?|ttf|eot|svg)$/,
+		loaders: [ 
+            'url-loader?limit=10000' 
+            ],
+        },
+		]
 		},
 		plugins: [
 		  new webpack.optimize.OccurenceOrderPlugin(), // recommanded by webpack

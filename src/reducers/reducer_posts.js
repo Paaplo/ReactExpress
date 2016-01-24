@@ -4,7 +4,7 @@ export default function(state=[], action) {
 
 	switch(action.type){
 		case ADD_POST:
-			return [ ...state, action.payload.data ];
+			return [ ...state, action.payload.data.SUCCESS ];
 		case GET_POSTS:
 			return action.payload.data;
 	}

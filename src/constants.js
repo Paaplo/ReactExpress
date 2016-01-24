@@ -1,9 +1,14 @@
 
-module.exports = {
-  INCREASE: 'INCREASE',
-  DECREASE: 'DECREASE',
-  POST_SELECTED: 'POST_SELECTED',
-  ADD_POST: 'ADD_POST',
-  GET_POSTS: 'GET_POSTS',
-  //DELETE_POST: 'DELETE_POST'
-};
+function createConstants(...constants) {
+    return constants.reduce((acc, constant) => {
+        acc[constant] = constant;
+        return acc;
+    }, {});
+}
+module.exports = createConstants( 
+   'INCREASE',
+   'DECREASE',
+   'POST_SELECTED',
+   'ADD_POST',
+   'GET_POSTS'
+);

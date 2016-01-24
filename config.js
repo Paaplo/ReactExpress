@@ -1,3 +1,4 @@
 module.exports = {
-	database: process.env.MONGO_URI || 'localhost'
+	development: process.env.MONGO_URI || 'localhost/db',
+    test: process.env.MONGO_URI ||  'localhost/db-test'
 };

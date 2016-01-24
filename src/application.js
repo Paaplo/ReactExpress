@@ -13,6 +13,7 @@ import App from './components/index.js';
 import Home from './components/Home/Home';
 import Bar from './components/Bar/Bar';
 import Foo from './components/Foo/Foo';
+//import Login from './components/Login/Login';
 
 let createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 let store = createStoreWithMiddleware(reducers);
@@ -22,13 +23,15 @@ let history = createHistory();
 syncReduxAndRouter(history, store);
 
 
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
-        <Route path="foo" component={Foo}/>
-        <Route path="bar" component={Bar}/>
+        <Route path="foo" component={(Foo)}/>
+        <Route path="bar" component={Bar}/>        
+        <Route path="*" component={Home}/>
       </Route>
     </Router>
   </Provider>,

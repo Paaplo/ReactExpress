@@ -37,12 +37,14 @@ const BarList = React.createClass({
     	<div className="row">
 	        <ul className="list-group col-sm-4">
 	           {this.renderList()}
+
 	        </ul>
           <BarDetail />
 	     </div>
     );
   }
 });
+ 
 
 function mapStateToProps (state) {
 	return{

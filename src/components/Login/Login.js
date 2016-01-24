@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import { pushPath } from 'redux-simple-router';
 import { connect } from 'react-redux';
-import { getPosts } from '../../actions/index';
 import { bindActionCreators } from 'redux';
-
-export class Home extends Component{
+//import Login from '../../containers/login';
+class Login extends Component{
 	constructor(props) {
 	    super(props);
 	}
@@ -13,7 +12,8 @@ export class Home extends Component{
   render() {
     return (
     	<div className="container">
-    		<h1>Home</h1>
+    		<h1>Login</h1>
+          //  <Login />
     	</div>
     );
   }
@@ -22,4 +22,4 @@ export class Home extends Component{
 export default connect(
   null,
    { pushPath } 
-)(Home);
+)(Login);

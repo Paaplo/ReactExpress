@@ -20,13 +20,12 @@ router.route('/posts')
 			if (err){
 				return res.send(500, err);
 			}
-			return res.json(post);
+			return res.json({SUCCESS: post});
 		});
 	})
 	.get(function(req, res){
 		Post.find(function(err, data){
-			if(err)
-			{
+			if(err){
 				return res.send(500, err);
 			}
 			return res.send(data);
@@ -37,7 +36,7 @@ router.route('/posts/:id')
 	.get(function(req, res){
 		Post.findById(req.params.id, function(err, post){
 			if(err){
-				return res.send(err);
+				return res.send({ERROR: err});
 			}
 			return res.json(post);
 		});
@@ -46,30 +45,35 @@ router.route('/posts/:id')
 	.put(function(req, res){
 		Post.findById(req.params.id, function(err, post){
 			if(err){
-				return res.send(err);
+				return res.send({ERROR: err});
 			}
 			post.created_by = req.body.created_by;
-			post.text = req.body.text;
+			post.text = req.body.text;		
+           	post.title = req.body.title;
 
 			post.save(function(err, post){
 				if(err){
-					return res.send(err);
+					return res.send({ERROR: err});
 				}
-
-				return res.json(post);
+				return res.json({UPDATED: post});
 			});
 		});
 	})
 	//deletes the post
 	.delete(function(req, res) {
-		Post.remove({
-			_id: req.params.id
-		}, function(err) {
-			if (err){
-				return res.send(err);
-			}
-			return res.json(req.params.id);
-		});
+        Post.findById(req.params.id, function(err, post) {
+            if(err) {
+                res.json({ERROR: err});
+            } else {
+                post.remove(function(err){
+                    if(err) {
+                        res.json({ERROR: err});
+                    } else {
+                        res.json({REMOVED: post});
+                    }
+                });
+            }
+        });
 	});
 
 export default router;
